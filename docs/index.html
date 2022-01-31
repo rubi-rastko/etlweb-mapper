@@ -8,10 +8,12 @@
   <body>
 
     <form id="jsonobjects">
+      
       <DIV id="inputjson-tabs">
         <DIV class="tabbutton" id="leftjson">source</DIV>
-        <DIV class="tabbutton" id="leftlist">list</DIV>
+        <DIV class="tabbutton" id="leftlist">mapping</DIV>
       </DIV>
+      <label id="cbkblbl">Override KB<input type="checkbox" id="overridekb"></label>
       <fieldset>
         
         <DIV id="jsonleft" class="tabbedcontainer">        
@@ -31,6 +33,12 @@
           <DIV id="jsonrightlist">Waiting for paste...</DIV>
         </DIV>
       </fieldset><br>
+      <fieldset id="prefixfs">
+        <input type="text" id="leftprefixkey" 
+          placeholder="left JSON prefix" />
+        <input type="text" id="rightprefixkey"
+          placeholder="right JSON prefix" />
+      </fieldset>
       <DIV id="keykeypair"><SPAN></SPAN><SPAN></SPAN></DIV>
       <fieldset class="br">
         <textarea id="jsonmapping"></textarea><br>

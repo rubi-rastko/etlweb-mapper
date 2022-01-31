@@ -60,6 +60,9 @@ domelements = {
     "listbox2":document.getElementById("listright"),
     "buttontabs": document.getElementsByClassName("tabbutton"),
     "jsonmapping": document.getElementById("jsonmapping"),
+    "leftprefixkey":document.getElementById("leftprefixkey"),
+    "rightprefixkey":document.getElementById("rightprefixkey"),
+    "overridekb":document.getElementById("overridekb"),
 };
 
 domelements.inputjson1.innerHTML = JSON.stringify(test_obj_src, null, 4)
@@ -110,7 +113,6 @@ domelements.inputjson1.addEventListener("paste", function(e) {
     }
     
     e.preventDefault();
-    console.log("DOUBLE");
     jsrc = document.getElementById("inputjson1");
     try {
         jobj = JSON.parse(jsrc.value);
@@ -120,7 +122,7 @@ domelements.inputjson1.addEventListener("paste", function(e) {
         return true;
     }
     
-    items = flatten_json(jobj, "client", items);          
+    items = flatten_json(jobj, domelements.leftprefixkey.value, items);          
     json_domify(items, domhook);
 });
 
@@ -141,29 +143,23 @@ domelements.inputjson2.addEventListener("paste", function(e) {
         window.alert("Bad JSON somewhere.");
     }
     
-    items = flatten_json(jobj, "client", items);          
+    items = flatten_json(jobj, domelements.rightprefixkey.value, items);          
     json_domify(items, domhook);
 });
 
 
-domelements.listbox1.addEventListener("dblclick", function(e) {
-  e.preventDefault();
-  kkmappings[last_two_selected[0]] = last_two_selected[1];
-  document.getElementById("jsonmapping").value = JSON.stringify(kkmappings, null, "\n");
-
-});
-
 document.addEventListener("keypress",  function(e) {
-    console.log(e.key);
-    switch(e.key) {
-        case "m":
-        case "M":
-        case " ":
-            e.preventDefault()
-            kkmappings[last_two_selected[0]] = last_two_selected[1];
-            domelements.jsonmapping.value = JSON.stringify(kkmappings, null, "\n");
-            break;
+    if (domelements.overridekb.checked == true) {
+        switch(e.key) {
+            case "m":
+            case "M":
+            case " ":
+                e.preventDefault()
+                kkmappings[last_two_selected[0]] = last_two_selected[1];
+                domelements.jsonmapping.value = JSON.stringify(kkmappings, null, "\n");
+                break;
 
+        }
     }
 });
 
