@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <link href="./keymap_from_value.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    
+    <form id="jsonobjects">
+      <fieldset>
+        <DIV class="inputjson-tabs">
+          <DIV class="tabbutton" id="leftjson">source</DIV>
+          <DIV class="tabbutton" id="leftlist">list</DIV>
+        </DIV>
+        <DIV id="jsonleft" class="tabbedcontainer">        
+          <textarea id="inputjson1"></textarea>
+        </DIV>
+        <DIV id="listleft" class="tabbedcontainer" style="display:none">
+          <DIV id="jsonleftlist"></DIV>
+        </DIV>
+      </fieldset>
+      <fieldset>
+        <DIV class="inputjson-tabs">
+          <DIV class="tabbutton" id="rightjson">source</DIV>
+          <DIV class="tabbutton" id="rightlist">list</DIV>
+        </DIV>
+        <DIV id="jsonright" class="tabbedcontainer">        
+          <textarea id="inputjson2"></textarea>
+        </DIV>
+        <DIV id="listright" class="tabbedcontainer" style="display:none">
+          <DIV id="jsonrightlist">A</DIV>
+        </DIV>
+      </fieldset><br>
+<!-- o = document.createElement("DIV");
+    o.setAttribute("id", "keykeypair");
+    o.appendChild(document.createElement("SPAN"));
+    o.appendChild(document.createElement("SPAN"));
+-->
+      <DIV id="keykeypair"><SPAN></SPAN><SPAN></SPAN></DIV>
+
+      <fieldset class="br">
+        <textarea id="jsonmapping"></textarea><br>
+        <button  id="parsesrcjson" name="parsesrcjson" value="Parse">Parse</button>
+        <button  id="mapjson" name="mapjson" value="Map">Map</button>
+      </fieldset>  
+    </form>
+
+    <div id="pageheader"></div>
+    
+
+    
+    <script type="text/javascript" src="./main.js"></script>
+    </body>
+
+  </html>
+
+  <!--
+
+    test data: JSON object with values, mapped JSON objects with empties
+
+    input: Vkvp
+    output: K-K
+
+        get input's key
+        find mapping and output both keys
+
+
+    DATA structure
+
+        mapping[dot_notation_key1] = dot_notation_key2
+
+    OPS
+
+    flatten_json_object
+        take JSON object and "flatten" it (
+            copy each "leaf" value to a new JSON object
+            store it under dot.notation key for every parent
+            add child objects as dot.notated kvps
+    )
+
+
+
+-->

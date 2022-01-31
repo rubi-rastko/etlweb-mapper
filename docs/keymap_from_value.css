@@ -1,0 +1,99 @@
+#iamyourfatherluke {
+    font-family: 'IBM Flex Mono', 'SF Mono', 'Roboto Mono', monospace;
+    width: 100%;
+    overflow:auto;
+    word-wrap:normal
+}
+
+.tabbutton {
+    display:block;
+    float:left;
+    border-width:1px 0px 0 1px;
+    border-color:black ;
+    border-style:solid;
+    border-radius: 0.7em 0 0 0.0em;
+    padding:.5em;
+    cursor:pointer
+}
+
+div.tabbedcontainer {
+    width: 99%;
+    height:25em;
+    border-color: red;
+    border-width: 1px;
+}
+
+.dommedjson {
+    float:left;
+    width:40%;
+    height:auto;
+}
+
+form#jsonobjects  fieldset {
+    font-family: 'Consolas', 'Roboto Mono', monospace;
+    float:left;
+    width:40%;
+    height:25em;
+    padding:1%;
+    border-radius: .5em;
+    margin:0;
+}
+
+form#jsonobjects  fieldset.br {
+    clear: left;
+    width:82%;
+    height:auto;
+}
+
+form#jsonobjects fieldset textarea {
+    width:100%;
+    height:25em;
+    margin:0;
+    padding:0;
+    border-radius: .5em;
+}
+
+textarea#jsonmapping {
+    clear: left;
+    width: 40%;
+    height: 10em;
+}
+
+button#parsesrcjson, button#mapjson {
+    clear: left;
+    width: 40%;
+    margin: 1em;
+    border:0px;
+    padding: 1em;
+    font-size: 1.3em;
+    font-family:'New York Light', 'Roboto', serif;
+}
+
+#pageheader {
+    clear:left;
+    height: 2em;
+}
+#keykeypair {
+    
+    clear:left;
+    width: 84%;
+    height: 2em;
+    font-family: monospace;
+    font-size: 1.2em;
+    background-color: #dfeff3;
+    border: 1px black solid;
+    border-radius: .5em;
+}
+
+.jkey {
+    margin-left: 1em;
+}
+.jval {
+    margin-left: 1em;
+    margin-right: 1em;
+    
+}
+.jkey:hover {
+    border: 1px black solid;
+}
+
