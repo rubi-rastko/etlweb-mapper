@@ -36,9 +36,7 @@ div#keykeypair {
     vertical-align: middle;
 }
 
-div#keykeypair:first-line {
-    vertical-align: middle;
-}
+
 
 form#jsonobjects {
     margin: 20px auto 20px auto;
@@ -76,16 +74,6 @@ textarea#jsonmapping {
     height: 10em;
 }
 
-button#parsesrcjson, button#mapjson {
-    clear: left;
-    width: 40%;
-    margin: 1em;
-    border:0px;
-    padding: 1em;
-    font-size: 1.3em;
-    font-family:'New York Light', 'Roboto', serif;
-}
-
 div.tabbedcontainer {
     width: 99%;
     height:25em;
@@ -110,6 +98,11 @@ DIV.tabbutton {
     font-size: 1.2em;
     font-weight: 300;
 }
+
+DIV.tabbutton:hover {
+    background-color: #e70d6177
+}
+
 .dommedjson {
     float:left;
     width:40%;
@@ -119,7 +112,9 @@ DIV.tabbutton {
 
 .jkey {
     margin-left: 1em;
-    cursor:default
+    cursor:default;
+    width:100%;
+    display:block;
 }
 .jval {
     margin-left: 1em;
@@ -127,6 +122,6 @@ DIV.tabbutton {
     
 }
 .jkey:hover {
-    border: 1px black solid;
+    background-color:#e70d6122
 }
 

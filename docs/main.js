@@ -37,7 +37,7 @@ json_domify = function(jsonobj, domhook) {
         v.setAttribute("class", "jval");
         v.innerHTML = items[i];
         k.addEventListener("click", on_val_click, false);
-        kvp.appendChild(v);
+        // kvp.appendChild(v);
         x.appendChild(kvp);   
         domhook.appendChild(x);   
     }
@@ -53,8 +53,6 @@ geiger_counter = 1
 domelements = {
     "inputjson1": document.getElementById("inputjson1"),
     "inputjson2": document.getElementById("inputjson2"),
-    "parsesrcjson": document.getElementById("parsesrcjson"),
-    "mapjson": document.getElementById("mapjson"),
     "pageheader": document.getElementById("pageheader"),
     "jsonbox1":document.getElementById("jsonleft"),
     "jsonbox2":document.getElementById("jsonright"),
@@ -160,6 +158,8 @@ document.addEventListener("keypress",  function(e) {
     switch(e.key) {
         case "m":
         case "M":
+        case " ":
+            e.preventDefault()
             kkmappings[last_two_selected[0]] = last_two_selected[1];
             domelements.jsonmapping.value = JSON.stringify(kkmappings, null, "\n");
             break;
