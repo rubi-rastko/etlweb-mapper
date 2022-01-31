@@ -1,8 +1,10 @@
 #jsonleftlist, #jsonrightlist {
     font-family: 'IBM Flex Mono', 'SF Mono', 'Roboto Mono', monospace;
     width: 100%;
-    overflow:auto;
-    word-wrap:normal
+    overflow:scroll;
+    word-wrap:normal;
+    height:25em;
+    text-align: left;
 }
 
 div#inputjson-tabs {
@@ -12,36 +14,36 @@ div#inputjson-tabs {
     height: auto;
     width:80%;
 }
-.tabbutton {
-    display:block;
-    float:left;
-    width: 40%;
-    background-color:#dfeff3;
-    border-width:1px 0px 0 1px;
-    border-color:black ;
-    border-style:solid;
-    border-radius: 0.7em 0 0 0.0em;
-    padding:.5em;
-    cursor:pointer;
-    font-family: 'Candara', 'IBM Plex Sans Condensed', 'SF Pro Display', sans-serif;
-    font-size: 1.2em;
-    font-weight: 300;
+
+
+
+
+#pageheader {
+    clear:left;
+    height: 2em;
+}
+div#keykeypair {
+    
+    clear:left;
+    width: 84%;
+    height: 3em;
+    font-family: monospace;
+    font-size: 1.9em;
+    background-color: #dfeff3;
+    border: 1px black solid;
+    border-radius: 2em;
+    text-align: center;
+    vertical-align: middle;
 }
 
-div.tabbedcontainer {
-    width: 99%;
-    height:25em;
-    border-color: red;
-    border-width: 1px;
-    overflow:scroll
+div#keykeypair:first-line {
+    vertical-align: middle;
 }
 
-.dommedjson {
-    float:left;
-    width:40%;
-    height:auto;
+form#jsonobjects {
+    margin: 20px auto 20px auto;
+    width: 80%;
 }
-
 form#jsonobjects  fieldset {
     font-family: 'Consolas', 'Roboto Mono', monospace;
     float:left;
@@ -50,6 +52,7 @@ form#jsonobjects  fieldset {
     padding:1%;
     border-radius: .5em;
     margin:0;
+    text-align: center;
 }
 
 form#jsonobjects  fieldset.br {
@@ -59,10 +62,11 @@ form#jsonobjects  fieldset.br {
 }
 
 form#jsonobjects fieldset textarea {
-    width:100%;
+    width:92%;
     height:25em;
-    margin:0;
-    padding:0;
+    margin:0em;
+    padding:1em;
+    font-size:1.2em;
     border-radius: .5em;
 }
 
@@ -82,24 +86,40 @@ button#parsesrcjson, button#mapjson {
     font-family:'New York Light', 'Roboto', serif;
 }
 
-#pageheader {
-    clear:left;
-    height: 2em;
+div.tabbedcontainer {
+    width: 99%;
+    height:25em;
+    border-color: red;
+    border-width: 1px;
+    overflow:hidden;
 }
-#keykeypair {
-    
-    clear:left;
-    width: 84%;
-    height: 2em;
-    font-family: monospace;
+
+
+DIV.tabbutton {
+    display:block;
+    float:left;
+    width: 40%;
+    background-color:#dfeff3;
+    border-width:1px 0px 0 1px;
+    border-color:black ;
+    border-style:solid;
+    border-radius: 0.7em 0 0 0.0em;
+    padding:.5em;
+    cursor:pointer;
+    font-family: 'Candara', 'IBM Plex Sans Condensed', 'SF Pro Display', sans-serif;
     font-size: 1.2em;
-    background-color: #dfeff3;
-    border: 1px black solid;
-    border-radius: .5em;
+    font-weight: 300;
 }
+.dommedjson {
+    float:left;
+    width:40%;
+    height:auto;
+}
+
 
 .jkey {
     margin-left: 1em;
+    cursor:default
 }
 .jval {
     margin-left: 1em;

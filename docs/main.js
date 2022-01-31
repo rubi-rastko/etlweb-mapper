@@ -47,14 +47,9 @@ json_domify = function(jsonobj, domhook) {
 
 // GLOBALS
 
-kkmappings = {
-};       
-
+kkmappings = {};
 last_two_selected = ["", ""]
-
 geiger_counter = 1
-
-
 domelements = {
     "inputjson1": document.getElementById("inputjson1"),
     "inputjson2": document.getElementById("inputjson2"),
@@ -66,12 +61,12 @@ domelements = {
     "listbox1":document.getElementById("listleft"),
     "listbox2":document.getElementById("listright"),
     "buttontabs": document.getElementsByClassName("tabbutton"),
+    "jsonmapping": document.getElementById("jsonmapping"),
 };
 
 domelements.inputjson1.innerHTML = JSON.stringify(test_obj_src, null, 4)
 domelements.inputjson2.innerHTML = JSON.stringify(test_obj_dest, null, 4)
 
-console.log(domelements.buttontabs);
 for (i = 0; i < domelements.buttontabs.length; i++) {
     domelements.buttontabs[i].addEventListener("click", function(e) {
         var i;
@@ -153,54 +148,34 @@ domelements.inputjson2.addEventListener("paste", function(e) {
 });
 
 
-domelements.mapjson.addEventListener("click", function(e) {
+domelements.listbox1.addEventListener("dblclick", function(e) {
   e.preventDefault();
   kkmappings[last_two_selected[0]] = last_two_selected[1];
   document.getElementById("jsonmapping").value = JSON.stringify(kkmappings, null, "\n");
 
 });
 
-domelements.parsesrcjson.addEventListener("click", function(e) {
-  items = {};
-  domhook = document.getElementById("iamyourfatherluke");
-  
-  while (domhook.firstChild) {
-    domhook.removeChild(domhook.firstChild);
-  }
-  
-  e.preventDefault();
-  console.log("DOUBLE");
-  jsrc1 = document.getElementById("inputjson1");
-  jsrc2 = document.getElementById("inputjson2");
-  try {
-    jobj1 = JSON.parse(jsrc1.value);
-    jobj2 = JSON.parse(jsrc2.value);
+document.addEventListener("keypress",  function(e) {
+    console.log(e.key);
+    switch(e.key) {
+        case "m":
+        case "M":
+            kkmappings[last_two_selected[0]] = last_two_selected[1];
+            domelements.jsonmapping.value = JSON.stringify(kkmappings, null, "\n");
+            break;
 
-  } catch (SyntaxError) {
-    window.alert("Bad JSON somewhere.");
-  }
-  
-  items = flatten_json(jobj1, "client", items);          
-  json_domify(items, domhook);
-  items = flatten_json(jobj2, "jotform", items);          
-  json_domify(items, domhook);
-
+    }
 });
+
 
 on_val_click = function(event_target) {
     kkp = document.getElementById("keykeypair");
-    console.log(event_target);
-    console.log(kkmappings);
     ksource = event_target.target.parentElement.firstElementChild.innerHTML;
-    console.log(ksource);
     geiger_counter += 1;
     geiger_counter %= 2;
     last_two_selected[geiger_counter] = ksource;
-    // kkmappings[last_two_selected[0]] = last_two_selected[1];
     kkp.children[0].innerHTML = last_two_selected[0] + "&nbsp;:&nbsp;";
-    kkp.children[1].innerHTML = last_two_selected[1] + "&nbsp;";
-    console.log(last_two_selected);
-    
+    kkp.children[1].innerHTML = last_two_selected[1] + "&nbsp;";    
 };
 
 
