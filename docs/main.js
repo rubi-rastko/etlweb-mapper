@@ -23,7 +23,7 @@ flatten_json = function(jsonobj, objectkey, items) {
 
 json_domify = function(jsonobj, domhook) {
     x = document.createElement("DIV");
-    x.setAttribute("class", "dommedjson");
+    x.setAttribute("class", "domifiedjson");
 
     for (i in jsonobj) {
         kvp = document.createElement("DIV");
@@ -38,8 +38,8 @@ json_domify = function(jsonobj, domhook) {
         v.innerHTML = items[i];
         k.addEventListener("click", on_val_click, false);
         kvp.appendChild(v);
-            x.appendChild(kvp);   
-            domhook.appendChild(x);   
+        x.appendChild(kvp);   
+        domhook.appendChild(x);   
     }
 }
 
@@ -72,39 +72,84 @@ domelements.inputjson1.innerHTML = JSON.stringify(test_obj_src, null, 4)
 domelements.inputjson2.innerHTML = JSON.stringify(test_obj_dest, null, 4)
 
 console.log(domelements.buttontabs);
-    Array(domelements.buttontabs).forEach(function(i) {
-    i.addEventListener("click", function(e) {
+for (i = 0; i < domelements.buttontabs.length; i++) {
+    domelements.buttontabs[i].addEventListener("click", function(e) {
         var i;
         var x = document.getElementsByClassName("tabbedcontainer");
         var o = ""
 
-        x.forEach(function(tabbedContainer) {
-            tabbedContainer.style.display = "none";
-        });
+        
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        };
 
-        switch(e.getAttribute("id")) {
+        switch(e.target.getAttribute("id")) {
             case "leftjson":
-                o = "jsonleft";
+                o = ["jsonleft", "jsonright"];
                 break;
             case "leftlist":
-                o = "listleft";
+                o = ["listleft", "listright"];
                 break;
-            case "rightjson":
-                o = "jsonright";
+            default:
+                o = null
                 break;
-            case "rightlist":
-                o = "listright";
-                break;
+
         }
 
-        document.getElementById(o).style.display = "block";
+        if (o) {
+            o.forEach(function(oitem) {
+                document.getElementById(oitem).style.display = "block";
+            });
+
+        }
     });
 
-});
+}
 
 // EVENT HANDLERS
 domelements.inputjson1.addEventListener("paste", function(e) {
 
+    items = {};
+    domhook = document.getElementById("jsonleftlist");
+  
+    while (domhook.firstChild) {
+        domhook.removeChild(domhook.firstChild);
+    }
+    
+    e.preventDefault();
+    console.log("DOUBLE");
+    jsrc = document.getElementById("inputjson1");
+    try {
+        jobj = JSON.parse(jsrc.value);
+
+    } catch (SyntaxError) {
+        window.alert("Bad JSON somewhere.");
+        return true;
+    }
+    
+    items = flatten_json(jobj, "client", items);          
+    json_domify(items, domhook);
+});
+
+domelements.inputjson2.addEventListener("paste", function(e) {
+    items = {};
+    domhook = document.getElementById("jsonrightlist");
+  
+    while (domhook.firstChild) {
+        domhook.removeChild(domhook.firstChild);
+    }
+    
+    e.preventDefault();
+    jsrc = document.getElementById("inputjson2");
+    try {
+        jobj = JSON.parse(jsrc.value);
+
+    } catch (SyntaxError) {
+        window.alert("Bad JSON somewhere.");
+    }
+    
+    items = flatten_json(jobj, "client", items);          
+    json_domify(items, domhook);
 });
 
 

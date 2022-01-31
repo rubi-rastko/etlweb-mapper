@@ -6,30 +6,29 @@
     <link href="./keymap_from_value.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    
+
     <form id="jsonobjects">
+      <DIV id="inputjson-tabs">
+        <DIV class="tabbutton" id="leftjson">source</DIV>
+        <DIV class="tabbutton" id="leftlist">list</DIV>
+      </DIV>
       <fieldset>
-        <DIV class="inputjson-tabs">
-          <DIV class="tabbutton" id="leftjson">source</DIV>
-          <DIV class="tabbutton" id="leftlist">list</DIV>
-        </DIV>
+        
         <DIV id="jsonleft" class="tabbedcontainer">        
           <textarea id="inputjson1"></textarea>
         </DIV>
         <DIV id="listleft" class="tabbedcontainer" style="display:none">
-          <DIV id="jsonleftlist"></DIV>
+          <DIV id="jsonleftlist">Waiting for paste...</DIV>
         </DIV>
       </fieldset>
       <fieldset>
         <DIV class="inputjson-tabs">
-          <DIV class="tabbutton" id="rightjson">source</DIV>
-          <DIV class="tabbutton" id="rightlist">list</DIV>
         </DIV>
         <DIV id="jsonright" class="tabbedcontainer">        
           <textarea id="inputjson2"></textarea>
         </DIV>
         <DIV id="listright" class="tabbedcontainer" style="display:none">
-          <DIV id="jsonrightlist">A</DIV>
+          <DIV id="jsonrightlist">Waiting for paste...</DIV>
         </DIV>
       </fieldset><br>
 <!-- o = document.createElement("DIV");

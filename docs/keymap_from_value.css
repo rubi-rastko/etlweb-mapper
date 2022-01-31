@@ -1,19 +1,31 @@
-#iamyourfatherluke {
+#jsonleftlist, #jsonrightlist {
     font-family: 'IBM Flex Mono', 'SF Mono', 'Roboto Mono', monospace;
     width: 100%;
     overflow:auto;
     word-wrap:normal
 }
 
+div#inputjson-tabs {
+    clear:left;
+    float:left;
+    
+    height: auto;
+    width:80%;
+}
 .tabbutton {
     display:block;
     float:left;
+    width: 40%;
+    background-color:#dfeff3;
     border-width:1px 0px 0 1px;
     border-color:black ;
     border-style:solid;
     border-radius: 0.7em 0 0 0.0em;
     padding:.5em;
-    cursor:pointer
+    cursor:pointer;
+    font-family: 'Candara', 'IBM Plex Sans Condensed', 'SF Pro Display', sans-serif;
+    font-size: 1.2em;
+    font-weight: 300;
 }
 
 div.tabbedcontainer {
@@ -21,6 +33,7 @@ div.tabbedcontainer {
     height:25em;
     border-color: red;
     border-width: 1px;
+    overflow:scroll
 }
 
 .dommedjson {
