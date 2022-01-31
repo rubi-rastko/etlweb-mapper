@@ -1,3 +1,6 @@
+test_obj_dest = { "demographics": { "first_name": "John", "last_name": "Smith", "location": { "lat": 45.518, "lon": -73.582, "zip": "H0H 0H0" }, "gender": "M" }, "id": 1001, "ac_id": "AC000000024", "external_id": "sor_client_external_id_1", "profile_id": 7890, "branch_id": 2001, "status": "active", "contacts": [ { "id": 1, "ac_id": "AC000000024", "external_id": "crm_client_contact_external_id_1", "contact_type": "Medical", "relationship": "Doctor", "language": "en", "status": "enabled", "demographics": { "first_name": "Jane", "last_name": "Smith", "gender": "M" } } ], "care_team": [ { "name": "John Smith", "id": 1001, "external_id": "sor_employee_external_id_1" } ], "language": "sq", "groups": [ { "id": 1, "name": "Group A" } ], "cost_centre": { "description": "Montreal", "id": 2, "number": "5555", "status": "enabled" }, "tags": [ "Tag" ], "timezone": "America/Toronto" }
+test_obj_src =  { "form_sets":[ { "input":{ "name": "clientname", "value": "John Smith" }, "input":{ "name": "gender", "value": 0 } }, { "input":{ "name": "contact_name", "value": "Jane Smith" }, "input":{ "name": "relationship", "value": "Doctor" } } ] }
+
 flatten_json = function(jsonobj, objectkey, items) {
     items = {}
     hierarchy_key = ""
@@ -64,6 +67,9 @@ domelements = {
     "listbox2":document.getElementById("listright"),
     "buttontabs": document.getElementsByClassName("tabbutton"),
 };
+
+domelements.inputjson1.innerHTML = JSON.stringify(test_obj_src, null, 4)
+domelements.inputjson2.innerHTML = JSON.stringify(test_obj_dest, null, 4)
 
 console.log(domelements.buttontabs);
     Array(domelements.buttontabs).forEach(function(i) {
@@ -161,5 +167,3 @@ on_val_click = function(event_target) {
 
 
 
-
-   
