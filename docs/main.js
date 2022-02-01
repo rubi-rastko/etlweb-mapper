@@ -7,7 +7,7 @@ flatten_json = function(jsonobj, objectkey, items) {
     temp_items = {}
 
     for (k in jsonobj) {
-        hierarchy_key = objectkey + "." + k.toString();
+        hierarchy_key = objectkey + (objectkey ? "." : "") + k.toString();
 
         if (jsonobj[k] && jsonobj[k] instanceof Object) {
             // equiv python dict.extend
@@ -37,7 +37,7 @@ json_domify = function(jsonobj, domhook) {
         v.setAttribute("class", "jval");
         v.innerHTML = items[i];
         k.addEventListener("click", on_val_click, false);
-        kvp.appendChild(v);
+        //kvp.appendChild(v);
         x.appendChild(kvp);   
         domhook.appendChild(x);   
     }
@@ -59,105 +59,70 @@ domelements = {
     "listbox1":document.getElementById("listleft"),
     "listbox2":document.getElementById("listright"),
     "buttontabs": document.getElementsByClassName("tabbutton"),
-    "jsonmapping": document.getElementById("jsonmapping"),
-    "leftprefixkey":document.getElementById("leftprefixkey"),
-    "rightprefixkey":document.getElementById("rightprefixkey"),
+    "jsonmapping": document.getElementById("mappingoutput"),
+    "prefixkey1":document.getElementById("prefixkey1"),
+    "prefixkey2":document.getElementById("prefixkey2"),
     "overridekb":document.getElementById("overridekb"),
+    "divlist1":document.getElementById("divlist1"),
+    "divlist2":document.getElementById("divlist2"),
 };
+
+items = {}
+jobjects = [{},{}]
+jobjects_flat = [{},{}]
 
 domelements.inputjson1.innerHTML = JSON.stringify(test_obj_src, null, 4)
 domelements.inputjson2.innerHTML = JSON.stringify(test_obj_dest, null, 4)
 
 for (i = 0; i < domelements.buttontabs.length; i++) {
     domelements.buttontabs[i].addEventListener("click", function(e) {
+        items = {};
         var i;
         var x = document.getElementsByClassName("tabbedcontainer");
         var o = ""
+        var to_display = e.target.getAttribute("id") == "tabsource" ? "jsonsource" : "jsonmapping";
+        var domhook = {};
 
-        
         for (i = 0; i < x.length; i++) {
             x[i].style.display = "none";
         };
 
-        switch(e.target.getAttribute("id")) {
-            case "leftjson":
-                o = ["jsonleft", "jsonright"];
-                break;
-            case "leftlist":
-                o = ["listleft", "listright"];
-                break;
-            default:
-                o = null
-                break;
+        if (e.target.getAttribute("id") == "tabmapping") {
+            jobjects[0] = JSON.parse(domelements.inputjson1.value);
+            jobjects[1] = JSON.parse(domelements.inputjson2.value);
+            domhook = domelements.divlist1;
+            
+            while (domhook.firstChild) {
+                domhook.removeChild(domhook.firstChild);
+            }
 
-        }
+            domhook = domelements.divlist2;
+            
+            while (domhook.firstChild) {
+                domhook.removeChild(domhook.firstChild);
+            }
 
-        if (o) {
-            o.forEach(function(oitem) {
-                document.getElementById(oitem).style.display = "block";
-            });
-
-        }
+            jobjects_flat[0] = flatten_json(jobjects[0], 
+                domelements.prefixkey1.value, 
+                items
+            );
+            json_domify(jobjects_flat[0], domelements.divlist1);
+            jobjects_flat[1] = flatten_json(jobjects[1], 
+                domelements.prefixkey2.value, 
+                items
+            );          
+            json_domify(jobjects_flat[1], domelements.divlist2);
+        }      
+           
+        document.getElementById(to_display).style.display = "block";        
     });
 
 }
 
 // EVENT HANDLERS
-domelements.inputjson1.addEventListener("paste", function(e) {
-
-    items = {};
-    domhook = document.getElementById("jsonleftlist");
-  
-    while (domhook.firstChild) {
-        domhook.removeChild(domhook.firstChild);
-    }
-    
-    e.preventDefault();
-    jsrc = document.getElementById("inputjson1");
-    jsrc.value = (e.clipboardData || window.clipboardData).getData('text');
-    try {
-        jobj = JSON.parse(jsrc.value);
-
-    } catch (SyntaxError) {
-        window.alert("Bad JSON somewhere.");
-        return true;
-    }
-    
-    items = flatten_json(jobj, domelements.leftprefixkey.value, items);          
-    json_domify(items, domhook);
-});
-
-domelements.inputjson2.addEventListener("paste", function(e) {
-    items = {};
-    domhook = document.getElementById("jsonrightlist");
-  
-    
-
-    while (domhook.firstChild) {
-        domhook.removeChild(domhook.firstChild);
-    }
-    
-    
-    jsrc = document.getElementById("inputjson2");
-    jsrc.value = (e.clipboardData || window.clipboardData).getData('text');
-
-    try {
-        jobj = JSON.parse(jsrc.value);
-
-    } catch (SyntaxError) {
-        window.alert("Bad JSON somewhere.");
-    }
-    
-    items = flatten_json(jobj, domelements.rightprefixkey.value, items);          
-    json_domify(items, domhook);
-});
-
-
 document.addEventListener("keypress",  function(e) {
     if (domelements.overridekb.checked == true) {
         switch(e.key) {
-            case "m":
-            case "M":
             case " ":
                 e.preventDefault()
                 kkmappings[last_two_selected[0]] = last_two_selected[1];
@@ -171,13 +136,16 @@ document.addEventListener("keypress",  function(e) {
 
 on_val_click = function(event_target) {
     kkp = document.getElementById("keykeypair");
-    ksource = event_target.target.parentElement.firstElementChild.innerHTML;
+    ksource = event_target.target.innerHTML;
     geiger_counter += 1;
     geiger_counter %= 2;
     last_two_selected[geiger_counter] = ksource;
-    kkp.children[0].innerHTML = last_two_selected[0] + "&nbsp;:&nbsp;";
-    kkp.children[1].innerHTML = last_two_selected[1] + "&nbsp;";    
+    kkp.children[0].innerHTML = last_two_selected[0] + "<br>" + jobjects_flat[0][last_two_selected[0]];
+    kkp.children[1].innerHTML = last_two_selected[1] + "<br>" + jobjects_flat[1][last_two_selected[1]];
 };
+
+// domelements.inputjson1.addEventListener("paste", onpaste_domify_kvps, false);
+// domelements.inputjson2.addEventListener("paste", onpaste_domify_kvps, false);
 
 
 

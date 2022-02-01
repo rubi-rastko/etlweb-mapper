@@ -10,11 +10,11 @@
     <form id="jsonobjects">
       <fieldset>
         <DIV id="inputjson-tabs tab-container">
-          <DIV id="leftjson"
+          <DIV id="tabsource"
             class="tabbutton color-priority-context">
               source
           </DIV>
-          <DIV id="leftlist" 
+          <DIV id="tabmapping" 
             class="tabbutton color-priority-context">
               mapping</DIV>
         </DIV>
@@ -26,27 +26,28 @@
       </fieldset>
 
       <fieldset>
-        <DIV id="jsonleft"
+        <DIV id="jsonsource"
           class="tabbedcontainer">
           <DIV class="float-container">                  
               <textarea id="inputjson1"
                 class="block-inline"
-                rows="25"
-                cols="48"></textarea>
+                cols="48"
+                rows="25"></textarea>
+                
               <textarea id="inputjson2"
                 class="block-inline"
-                rows="25"
-                cols="48"></textarea>
+                cols="48"
+                rows="25"></textarea>
           </DIV>
         </DIV>
-        <DIV id="listleft"
+        <DIV id="jsonmapping"
           class="tabbedcontainer"
           style="display:none">
-              <DIV id="jsonleftlist"
+              <DIV id="divlist1"
                 class="block-inline div-list">
                   Waiting for paste...
               </DIV>         
-              <DIV id="jsonrightlist"
+              <DIV id="divlist2"
                 class="block-inline div-list">
                   Waiting for paste...
               </DIV>
@@ -54,19 +55,20 @@
 
       <fieldset id="prefixfs"
         class="fset-horizontal">
-          <input type="text" id="leftprefixkey" 
+          <input type="text" id="prefixkey1" 
             placeholder="left JSON prefix" />
-          <input type="text" id="rightprefixkey"
+          <input type="text" id="prefixkey2"
             placeholder="right JSON prefix" />
       </fieldset>
 
       <DIV id="keykeypair"
         class="color-priority-focal">
-          <SPAN></SPAN><SPAN></SPAN>
+          <DIV class="block-inline kkpitem"></DIV>
+          <DIV class="block-inline kkpitem"></DIV>
       </DIV>
 
       <fieldset class="br">
-        <textarea id="jsonmapping"></textarea><br>
+        <textarea id="mappingoutput"></textarea><br>
       </fieldset>  
     </form>
 
