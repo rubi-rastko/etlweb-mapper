@@ -37,7 +37,7 @@ json_domify = function(jsonobj, domhook) {
         v.setAttribute("class", "jval");
         v.innerHTML = items[i];
         k.addEventListener("click", on_val_click, false);
-        // kvp.appendChild(v);
+        kvp.appendChild(v);
         x.appendChild(kvp);   
         domhook.appendChild(x);   
     }
