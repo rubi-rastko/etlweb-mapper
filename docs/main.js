@@ -35,9 +35,9 @@ json_domify = function(jsonobj, domhook) {
         kvp.appendChild(k);
         v = document.createElement("SPAN");
         v.setAttribute("class", "jval");
-        v.innerHTML = items[i];
-        k.addEventListener("click", on_val_click, false);
-        //kvp.appendChild(v);
+        v.innerHTML = jsonobj[i];
+        kvp.appendChild(v);
+        kvp.addEventListener("click", on_val_click, true);
         x.appendChild(kvp);   
         domhook.appendChild(x);   
     }
@@ -103,12 +103,12 @@ for (i = 0; i < domelements.buttontabs.length; i++) {
             }
 
             jobjects_flat[0] = flatten_json(jobjects[0], 
-                domelements.prefixkey1.value, 
+                "", 
                 items
             );
             json_domify(jobjects_flat[0], domelements.divlist1);
             jobjects_flat[1] = flatten_json(jobjects[1], 
-                domelements.prefixkey2.value, 
+                "", 
                 items
             );          
             json_domify(jobjects_flat[1], domelements.divlist2);
@@ -135,8 +135,16 @@ document.addEventListener("keypress",  function(e) {
 
 
 on_val_click = function(event_target) {
+    source_text = event_target.target;
+
+    if (event_target.target.getAttribute) {
+        if (event_target.target.getAttribute("class") == "jval") {
+            source_text = event_target.target.parentElement.firstElementChild;
+        }
+    }
     kkp = document.getElementById("keykeypair");
-    ksource = event_target.target.innerHTML;
+    ksource = source_text.innerHTML;
+    source_text.style.backgroundColor = "#00bbcc22"
     geiger_counter += 1;
     geiger_counter %= 2;
     last_two_selected[geiger_counter] = ksource;
