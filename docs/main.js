@@ -29,11 +29,11 @@ json_domify = function(jsonobj, domhook) {
         kvp = document.createElement("DIV");
         kvp.setAttribute("id", i.replace(/[\._]/, "-"));
         kvp.setAttribute("class", "jkvp")
-        k = document.createElement("SPAN");
+        k = document.createElement("DIV");
         k.setAttribute("class", "jkey");
         k.innerHTML = i
         kvp.appendChild(k);
-        v = document.createElement("SPAN");
+        v = document.createElement("DIV");
         v.setAttribute("class", "jval");
         v.innerHTML = jsonobj[i];
         kvp.appendChild(v);
@@ -49,6 +49,7 @@ json_domify = function(jsonobj, domhook) {
 
 kkmappings = {};
 last_two_selected = ["", ""]
+last_two_objects = [null, null]
 geiger_counter = 1
 domelements = {
     "inputjson1": document.getElementById("inputjson1"),
@@ -144,12 +145,29 @@ on_val_click = function(event_target) {
     }
     kkp = document.getElementById("keykeypair");
     ksource = source_text.innerHTML;
-    source_text.style.backgroundColor = "#00bbcc22"
-    geiger_counter += 1;
+
+
+    
+    geiger_counter += 1;    
     geiger_counter %= 2;
+
     last_two_selected[geiger_counter] = ksource;
+    last_two_objects[geiger_counter] = source_text;
+    source_text.style.backgroundColor = "#00bbcc22";
     kkp.children[0].innerHTML = last_two_selected[0] + "<br>" + jobjects_flat[0][last_two_selected[0]];
     kkp.children[1].innerHTML = last_two_selected[1] + "<br>" + jobjects_flat[1][last_two_selected[1]];
+
+    if (geiger_counter == 0) {
+        last_two_objects[geiger_counter + 1].style.backgroundColor = "#ffffff00";
+    }
+    
+     
+        
+   
+
+
+
+
 };
 
 // domelements.inputjson1.addEventListener("paste", onpaste_domify_kvps, false);
