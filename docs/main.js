@@ -130,12 +130,16 @@ domelements.inputjson2.addEventListener("paste", function(e) {
     items = {};
     domhook = document.getElementById("jsonrightlist");
   
+    
+
     while (domhook.firstChild) {
         domhook.removeChild(domhook.firstChild);
     }
     
     
     jsrc = document.getElementById("inputjson2");
+    jsrc.value = (e.clipboardData || window.clipboardData).getData('text');
+
     try {
         jobj = JSON.parse(jsrc.value);
 
