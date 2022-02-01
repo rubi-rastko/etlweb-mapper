@@ -134,7 +134,7 @@ domelements.inputjson2.addEventListener("paste", function(e) {
         domhook.removeChild(domhook.firstChild);
     }
     
-    e.preventDefault();
+    
     jsrc = document.getElementById("inputjson2");
     try {
         jobj = JSON.parse(jsrc.value);
