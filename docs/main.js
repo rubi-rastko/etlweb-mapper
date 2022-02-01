@@ -114,6 +114,7 @@ domelements.inputjson1.addEventListener("paste", function(e) {
     
     e.preventDefault();
     jsrc = document.getElementById("inputjson1");
+    jsrc.value = (e.clipboardData || window.clipboardData).getData('text');
     try {
         jobj = JSON.parse(jsrc.value);
 
