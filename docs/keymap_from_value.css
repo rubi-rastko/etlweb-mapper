@@ -1,162 +1,119 @@
-#jsonleftlist, #jsonrightlist {
-    font-family: 'IBM Flex Mono', 'SF Mono', 'Roboto Mono', monospace;
-    width: 100%;
-    overflow:scroll;
+@import url("./fonts.css");
+@import url("./colors.css");
+
+BODY {
+    font-family: plexscl;
+}
+
+INPUT {
+    font-family: plexscl;
+}
+
+INPUT[type="text"] {
+    margin: 0;
+}
+
+FIELDSET {
+    border:0px;
+}
+
+
+#keykeypair {    
+    clear:left;
+    height: 3em;
+    vertical-align: middle;
+    word-wrap: normal;
+}
+
+#jsonobjects {
+    border-width: 0 2px 0 2px;
+    box-shadow: 4px 4px 9px black;
+    border-color: black;
+    border-style: solid;
+    margin: 20px auto 20px auto;
+    width: 960px;
+}
+
+#prefixfs{
+    width:100%;
+    height:2em;
+    border:0px;
+
+}
+
+#jsonmapping {
+    clear: left;
+    width: 96%;
+    height: 10em;
+}
+
+
+#overridekb:checked {
+    color:red;    
+}
+
+.br {
+    clear: left;
+    height:auto;
+}
+
+.div-list {
+    width: 48%;
     word-wrap:normal;
     height:25em;
     text-align: left;
 }
 
-#leftprefixkey, #rightprefixkey {
-    font-size:1.4em;
-    width: 48%;
-    margin: 0;
+.block-inline {
+    float:left;
+    height:25em;
 }
-
-div#inputjson-tabs {
+.float-container {
+    position:static;
+}
+.tab-container {
     clear:left;
     float:left;
-    
     height: auto;
     width:80%;
 }
 
-
-
-
-#pageheader {
-    clear:left;
-    height: 2em;
-}
-div#keykeypair {    
-    clear:left;
-    width: 100%;
-    height: 3em;
-    font-family: monospace;
-    font-size: 1.9em;
-    background-color: #dfeff3;
-    border: 1px black solid;
-    border-radius: 2em;
-    text-align: center;
-    vertical-align: middle;
-    word-wrap: normal;
-}
-
-
-
-form#jsonobjects {
-    margin: 20px auto 20px auto;
-    width: 960px;
-}
-
-form#jsonobjects fieldset#prefixfs{
-    width:100%;
-    padding: 1em 1em 1em 0;
-    height:2em;
-    border:0px;
-
-}
-form#jsonobjects  fieldset {
-    font-family: 'Consolas', 'Roboto Mono', monospace;
-    float:left;
-    height:25em;
-    width:48%;
-    padding:.3em;
-    border-radius: .5em;
-    margin:0;
-    text-align: center;
-}
-
-form#jsonobjects  fieldset.br {
-    clear: left;
-    width:100%;
-    margin: 2px auto 2px auto;
-    height:auto;
-    
-}
-
-form#jsonobjects fieldset textarea {
-    width:100%;
-    height:25em;
-    padding:.1em;
-    font-size:1.2em;
-    border-radius: .5em;
-}
-
-textarea#jsonmapping {
-    clear: left;
-    width: 100%;
-    height: 10em;
-}
-
-#cbkblbl{
-    font-size: 1.2em;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 900;
-    color: #e70d6199;
-    padding:.3em;
-    width:20px;
-    border:1px solid black;
-    border-radius: .3em;
-}
-
-#cbkblbl:hover {
-    background-color: #e70d61ff;
-    color:#abc0aeff;
-}
-
-#overridekb:checked {
-    background-color: aqua;
-}
-
-div.tabbedcontainer {
-    width: 100%;
-    height:25em;
+.tabbedcontainer {
+    position: static;
     border-color: red;
     border-width: 1px;
-    overflow:hidden;
+    overflow:scroll;
 }
 
 
-DIV.tabbutton {
+.tabbutton {
     display:block;
     float:left;
     width: 40%;
-    background-color:#dfeff3;
     border-width:1px 0px 0 1px;
-    border-color:black ;
     border-style:solid;
-    border-radius: 0.7em 0 0 0.0em;
-    padding:.5em;
     cursor:pointer;
-    font-family: 'Candara', 'IBM Plex Sans Condensed', 'SF Pro Display', sans-serif;
-    font-size: 1.2em;
-    font-weight: 300;
 }
 
-DIV.tabbutton:hover {
-    background-color: #e70d6177
+.tabbutton:hover {
+    
 }
 
 .dommedjson {
     float:left;
-    width:40%;
-    height:auto;
+    height:100%;
 }
 
 
 .jkey {
-    margin-left: 1em;
     cursor:default;
     width:100%;
     display:block;
 }
 .jval {
-    margin-left: 1em;
-    margin-right: 1em;
     
 }
 .jkey:hover {
-    background-color:#e70d6122
+
 }
 

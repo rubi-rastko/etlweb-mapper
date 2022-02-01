@@ -8,44 +8,69 @@
   <body>
 
     <form id="jsonobjects">
-      
-      <DIV id="inputjson-tabs">
-        <DIV class="tabbutton" id="leftjson">source</DIV>
-        <DIV class="tabbutton" id="leftlist">mapping</DIV>
+      <fieldset>
+        <DIV id="inputjson-tabs tab-container">
+          <DIV id="leftjson"
+            class="tabbutton color-priority-context">
+              source
+          </DIV>
+          <DIV id="leftlist" 
+            class="tabbutton color-priority-context">
+              mapping</DIV>
+        </DIV>
+        <label id="cbkblbl"
+          class="color-priority-hazard">
+            Override KB
+            <input type="checkbox" id="overridekb">
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <DIV id="jsonleft"
+          class="tabbedcontainer">
+          <DIV class="float-container">                  
+              <textarea id="inputjson1"
+                class="block-inline"
+                rows="25"
+                cols="48"></textarea>
+              <textarea id="inputjson2"
+                class="block-inline"
+                rows="25"
+                cols="48"></textarea>
+          </DIV>
+        </DIV>
+        <DIV id="listleft"
+          class="tabbedcontainer"
+          style="display:none">
+              <DIV id="jsonleftlist"
+                class="block-inline div-list">
+                  Waiting for paste...
+              </DIV>         
+              <DIV id="jsonrightlist"
+                class="block-inline div-list">
+                  Waiting for paste...
+              </DIV>
+      </fieldset>
+
+      <fieldset id="prefixfs"
+        class="fset-horizontal">
+          <input type="text" id="leftprefixkey" 
+            placeholder="left JSON prefix" />
+          <input type="text" id="rightprefixkey"
+            placeholder="right JSON prefix" />
+      </fieldset>
+
+      <DIV id="keykeypair"
+        class="color-priority-focal">
+          <SPAN></SPAN><SPAN></SPAN>
       </DIV>
-      <label id="cbkblbl">Override KB<input type="checkbox" id="overridekb"></label>
-      <fieldset>
-        
-        <DIV id="jsonleft" class="tabbedcontainer">        
-          <textarea id="inputjson1"></textarea>
-        </DIV>
-        <DIV id="listleft" class="tabbedcontainer" style="display:none">
-          <DIV id="jsonleftlist">Waiting for paste...</DIV>
-        </DIV>
-      </fieldset>
-      <fieldset>
-        <DIV class="inputjson-tabs">
-        </DIV>
-        <DIV id="jsonright" class="tabbedcontainer">        
-          <textarea id="inputjson2"></textarea>
-        </DIV>
-        <DIV id="listright" class="tabbedcontainer" style="display:none">
-          <DIV id="jsonrightlist">Waiting for paste...</DIV>
-        </DIV>
-      </fieldset><br>
-      <fieldset id="prefixfs">
-        <input type="text" id="leftprefixkey" 
-          placeholder="left JSON prefix" />
-        <input type="text" id="rightprefixkey"
-          placeholder="right JSON prefix" />
-      </fieldset>
-      <DIV id="keykeypair"><SPAN></SPAN><SPAN></SPAN></DIV>
+
       <fieldset class="br">
         <textarea id="jsonmapping"></textarea><br>
       </fieldset>  
     </form>
 
-    <div id="pageheader"></div>
+    <!-- <div id="pageheader"></div> -->
     
 
     
@@ -54,30 +79,3 @@
 
   </html>
 
-  <!--
-
-    test data: JSON object with values, mapped JSON objects with empties
-
-    input: Vkvp
-    output: K-K
-
-        get input's key
-        find mapping and output both keys
-
-
-    DATA structure
-
-        mapping[dot_notation_key1] = dot_notation_key2
-
-    OPS
-
-    flatten_json_object
-        take JSON object and "flatten" it (
-            copy each "leaf" value to a new JSON object
-            store it under dot.notation key for every parent
-            add child objects as dot.notated kvps
-    )
-
-
-
--->

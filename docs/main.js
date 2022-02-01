@@ -156,7 +156,7 @@ document.addEventListener("keypress",  function(e) {
             case " ":
                 e.preventDefault()
                 kkmappings[last_two_selected[0]] = last_two_selected[1];
-                domelements.jsonmapping.value = JSON.stringify(kkmappings, null, "\n");
+                domelements.jsonmapping.value = JSON.stringify(kkmappings, null, 4);
                 break;
 
         }
