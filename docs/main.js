@@ -50,7 +50,7 @@ json_domify = function(jsonobj, domhook) {
 kkmappings = {};
 last_two_selected = ["", ""]
 last_two_objects = [null, null]
-geiger_counter = 1
+geiger_counter = 0
 domelements = {
     "inputjson1": document.getElementById("inputjson1"),
     "inputjson2": document.getElementById("inputjson2"),
@@ -128,6 +128,9 @@ document.addEventListener("keypress",  function(e) {
                 e.preventDefault()
                 kkmappings[last_two_selected[0]] = last_two_selected[1];
                 domelements.jsonmapping.value = JSON.stringify(kkmappings, null, 4);
+                last_two_objects[0].style.backgroundColor = "aqua";
+                last_two_objects[1].style.backgroundColor = "aqua";
+                last_two_objects = [{},{}];
                 break;
 
         }
@@ -144,22 +147,25 @@ on_val_click = function(event_target) {
         }
     }
     kkp = document.getElementById("keykeypair");
-    ksource = source_text.innerHTML;
-
-
-    
-    geiger_counter += 1;    
-    geiger_counter %= 2;
-
+    ksource = source_text.innerHTML;    
     last_two_selected[geiger_counter] = ksource;
     last_two_objects[geiger_counter] = source_text;
-    source_text.style.backgroundColor = "#00bbcc22";
+    last_two_objects[geiger_counter].style.backgroundColor = "#00bbcc22";
     kkp.children[0].innerHTML = last_two_selected[0] + "<br>" + jobjects_flat[0][last_two_selected[0]];
     kkp.children[1].innerHTML = last_two_selected[1] + "<br>" + jobjects_flat[1][last_two_selected[1]];
 
-    if (geiger_counter == 0) {
-        last_two_objects[geiger_counter + 1].style.backgroundColor = "#ffffff00";
+    geiger_counter += 1;
+
+    if (geiger_counter == 2) {
+        last_two_objects[0].style.backgroundColor = "#ffffff00";
+        last_two_objects[1].style.backgroundColor = "#ffffff00";
+
     }
+
+    geiger_counter %= 2;
+   
+        
+    
     
      
         
