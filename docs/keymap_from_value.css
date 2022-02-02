@@ -23,16 +23,11 @@ FIELDSET {
     border:0px;
 }
 
-
-#keykeypair {
-    position:fixed;
-    bottom:0;
-    left:0;
+LABEL {
     clear:left;
-    height: 3em;
-    width: 100%;
-    word-wrap: normal;
 }
+
+
 
 #keykeypair *::first-line {
     font-size: 1.5em;
@@ -40,14 +35,13 @@ FIELDSET {
 
 
 #jsonobjects {
+    border:0;
     /* box-shadow: 4px 4px 9px black; /**/
 }
 
 #mappingoutput {
-    clear: left;
-    width: 96%;
+    min-width: 32em;
     height: 10em;
-    margin-bottom: 4em;
 }
 
 
@@ -55,20 +49,9 @@ FIELDSET {
     color:red;    
 }
 
-.kkpitem {
-    padding:0px 1em 0px 1em;
-    border: 1px black solid;
-    border-bottom:0px;
-    width:44%;
-}
-.kkpitem:hover {
-    background-color: aqua;
 
-}
 
-.kkpitem:first-child {
-    text-align:right;
-}
+
 
 .br {
     clear: left;
@@ -76,24 +59,33 @@ FIELDSET {
 }
 
 .div-list {
-    width: 48%;
     text-align: left;
+    margin: 1em 1em 1em 0;
+    border-radius: 1em;
+    padding: .5em;
 }
 
 .block-inline {
+    border: 1px black solid;
     float:left;
 }
 .float-container {
 }
+
 .tab-container {
     clear:left;
     float:left;
     height: auto;
-    width:80%;
+    width:100%;
+    max-width:2048px;
+    border-bottom: 1px grey solid;
+    box-shadow: 0em -.1em .3em lightgray inset;
+    
 }
 
 .tabbedcontainer {
-    border-color: red;
+    border: 1px black solid;
+    border-color: #ffaaaa;
     border-width: 1px;
 }
 
@@ -102,16 +94,47 @@ FIELDSET {
     display:block;
     float:left;
     height:2em;
+    padding:.3em 0 0 .3em;
     width: 40%;
-    border-width:1px 0px 0 1px;
+    border-width:1px 1px 0 1px;
     border-style:solid;
     cursor:pointer;
     margin-bottom: 0;
+    border-top-right-radius: 1em;
 }
 
 .tabbutton:hover {
     background-color: aquamarine;
     
+}
+
+.fixed-header {
+    position:fixed;
+    top:0;
+    left:0;
+    height: 3em;
+    width: 100%;
+    border-bottom:1px black solid;
+    box-shadow: 0px 3px 5px lightgrey;
+
+}
+
+.fixed-footer {
+    position:fixed;
+    bottom:0;
+    left:0;
+    clear:left;
+    height: 3em;
+    width: 100%;
+    word-wrap: normal;
+    border-top:1px black solid;
+    box-shadow: 0px -3px 5px lightgrey;
+}
+
+.fset-static-content {
+    margin-top: 4em;
+    margin-bottom: 4em;
+
 }
 
 .dommedjson {
@@ -124,33 +147,49 @@ FIELDSET {
     
 }
 
+.kkpitem {
+    padding:0px 1em 0px 1em;
+    border: 0;
+    width:44%;
+    height:3em;
+}
+.kkpitem:hover {
+    background-color: aqua;
+
+}
+
+.kkpitem:first-child {
+    text-align:right;
+}
+
 
 .jkey {
     display:inline;
     float:left;
     cursor:default;
-    width:64%;
-    height:1em;
+    min-width:16em;
 }
 .jval {
     display:inline;
     float:left;
     cursor:default;
-    width:20%;
-    height: 1em;
+    min-width:5em;
     overflow:clip;
     max-width: 2048px;
     
 }
+
+.span-separator {
+    float:left;
+}
 .jkvp {
     width:100%;
-    height: 1em;
+    height: 16pt;
 }
 
 .jkvp:hover {
-    white-space:nowrap;
-    height:1em;
     background-color: aquamarine;
+    text-shadow: .0em .0em .3em yellow;
 
 }
 

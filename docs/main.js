@@ -7,6 +7,7 @@ flatten_json = function(jsonobj, objectkey, items) {
     temp_items = {}
 
     for (k in jsonobj) {
+        // start converting nested objects to dot notation; exclude leading "."
         hierarchy_key = objectkey + (objectkey ? "." : "") + k.toString();
 
         if (jsonobj[k] && jsonobj[k] instanceof Object) {
@@ -27,12 +28,16 @@ json_domify = function(jsonobj, domhook) {
 
     for (i in jsonobj) {
         kvp = document.createElement("DIV");
-        kvp.setAttribute("id", i.replace(/[\._]/, "-"));
+        kvp.setAttribute("id", i.replace(/[\._]/gi, "-"));
         kvp.setAttribute("class", "jkvp")
         k = document.createElement("DIV");
         k.setAttribute("class", "jkey");
         k.innerHTML = i
         kvp.appendChild(k);
+        sep = document.createElement("SPAN");
+        sep.setAttribute("class", "span-separator");
+        sep.innerHTML = "&nbsp;:&nbsp;"
+        kvp.appendChild(sep);
         v = document.createElement("DIV");
         v.setAttribute("class", "jval");
         v.innerHTML = jsonobj[i];
@@ -47,6 +52,8 @@ json_domify = function(jsonobj, domhook) {
 
 // GLOBALS
 
+
+// be careful not confuse JSON object with JSON string ;)
 kkmappings = {};
 last_two_selected = ["", ""]
 last_two_objects = [null, null]
@@ -163,17 +170,6 @@ on_val_click = function(event_target) {
     }
 
     geiger_counter %= 2;
-   
-        
-    
-    
-     
-        
-   
-
-
-
-
 };
 
 // domelements.inputjson1.addEventListener("paste", onpaste_domify_kvps, false);

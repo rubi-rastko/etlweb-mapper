@@ -8,59 +8,74 @@
   <body>
 
     <form id="jsonobjects">
-      <fieldset>
-        <DIV id="inputjson-tabs tab-container">
-          <DIV id="tabsource"
-            class="tabbutton color-priority-context">
-              source
-          </DIV>
-          <DIV id="tabmapping" 
-            class="tabbutton color-priority-context">
-              mapping</DIV>
-        </DIV>
+      <fieldset class="fixed-header color-back-panel">
         <label id="cbkblbl"
           class="color-priority-hazard">
             Override KB
             <input type="checkbox" id="overridekb">
         </label>
       </fieldset>
-
-      <fieldset>
+      <fieldset class="fset-static-content">
+        <legend
+          class="color-priority-aux">
+            Key mapping
+        </legend>
+        <DIV id="inputjson-tabs"
+          class="tab-container">
+          <DIV id="tabsource"
+            class="tabbutton color-priority-context color-back-panel">
+              source
+          </DIV>
+          <DIV id="tabmapping" 
+            class="tabbutton color-priority-context color-back-panel">
+              mapping</DIV>
+        </DIV>
         <DIV id="jsonsource"
-          class="tabbedcontainer">
-          <DIV class="float-container">                  
+          class="tabbedcontainer color-priority-focal">   
+          <DIV class="float-container">
+            <label class="color-priority-symbols"
+              for="inputjson1">source</label>
               <textarea id="inputjson1"
                 class="block-inline"
                 cols="48"
                 rows="25"></textarea>
-                
+            <label class="color-priority-symbols"
+              for="inputjson2">target</label>    
               <textarea id="inputjson2"
                 class="block-inline"
                 cols="48"
                 rows="25"></textarea>
+              
           </DIV>
         </DIV>
         <DIV id="jsonmapping"
           class="tabbedcontainer"
           style="display:none">
-              <DIV id="divlist1"
-                class="block-inline div-list">
-                  Waiting for paste...
-              </DIV>         
-              <DIV id="divlist2"
-                class="block-inline div-list">
-                  Waiting for paste...
-              </DIV>
+            <DIV id="divlist1"
+              class="block-inline div-list">
+            </DIV>         
+            <DIV id="divlist2"
+              class="block-inline div-list">
+            </DIV>
+        </DIV>
+        <label class="color-priority-symbols"
+        for="jsonmapping">result</label>
+        <DIV class)"block-inline">
+         
+          <textarea id="mappingoutput"></textarea>
+        </DIV>
       </fieldset>
  
-      <DIV id="keykeypair"
-        class="color-priority-focal">
-          <DIV class="block-inline kkpitem"></DIV>
-          <DIV class="block-inline kkpitem"></DIV>
-      </DIV>
+      <fieldset class="fixed-footer color-back-panel">
+        <DIV id="keykeypair"
+          class="color-priority-focal">
+            <DIV class="block-inline kkpitem"></DIV>
+            <DIV class="block-inline kkpitem"></DIV>
+        </DIV>
+      </fieldset>
 
       <fieldset class="br">
-        <textarea id="mappingoutput"></textarea><br>
+        
       </fieldset>  
     </form>
 

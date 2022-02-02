@@ -1,36 +1,44 @@
 .color-priority-urgent {
-    background-color:red;
+    color:red;
     font-weight: 900;
     font-size:1.6em;
 }
 
 .color-priority-hazard {
-    background-color:darkorange;
+    color:magenta;
     font-weight: 700;
     font-size: 1.3em;
 }
 
 .color-priority-focal {
-    background-color:white;
+    color:black;
     font-weight: 600;
     font-size: 1.2em;
 }
 
 .color-priority-context {
-    background-color:lightgray;
+    color:#333;
     font-weight: 400;
     font-size: 1em;
 }
 
 .color-priority-symbols {
-    background-color:lightgray;
+    color:darkcyan;
     font-weight: 300;
     font-size:.9em;
 }
 
 .color-priority-aux {
-    color:lightgrey;
+    color:darkgoldenrod;
     font-weight: 200;
     font-size:.7em;
+}
+
+.color-back-canvas {
+    background-color:white
+}
+
+.color-back-panel {
+    background-color:#eeeeee
 }
 
